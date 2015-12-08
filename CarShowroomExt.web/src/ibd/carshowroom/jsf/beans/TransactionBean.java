@@ -40,17 +40,14 @@ public class TransactionBean {
 	private Employee employee;
 	private Car car;
 	private Transaction transaction;
-	private List<Employee> employees;
 	private List<Car> cars;
 	
-	private int employeeId = 0;
 	private int carId = 0;
 	private java.util.Date utilDate = new java.util.Date();
 	
 	@PostConstruct
 	private void init() {
 		transaction = new Transaction();
-		employees = employeeService.findAllEmployees();
 		cars = carService.findAllCars();
 	}
 
@@ -60,14 +57,6 @@ public class TransactionBean {
 
 	public void setCarId(int carId) {
 		this.carId = carId;
-	}
-	
-	public int getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
 	}
 	
 	public java.util.Date getUtilDate() {
@@ -91,7 +80,12 @@ public class TransactionBean {
 
 	public Employee getEmployee() {
 		if(employee == null) {
-			employee = new Employee();
+			String username = contextProviderBean.getSessionContext().getCallerPrincipal().getName();
+			if(username == null) {
+				return null;
+			}
+			
+			employee = employeeService.findEmployeeByUsername(username);
 		}
 		return employee;
 	}
@@ -118,10 +112,6 @@ public class TransactionBean {
 		return transaction;
 	}
 
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-
 	public List<Car> getCars() {
 		return cars;
 	}
@@ -131,9 +121,8 @@ public class TransactionBean {
 	}
 
 	public String sell() {
-		if(client != null && employeeId != 0 && carId != 0 && transaction != null) {
+		if(client != null && carId != 0 && transaction != null) {
 			car = carService.findCarById(carId);
-//			employee = employeeService.findEmployeeById(employeeId);
 			String username = contextProviderBean.getSessionContext().getCallerPrincipal().getName();
 			if(username == null) {
 				return "transactionList";
@@ -150,7 +139,6 @@ public class TransactionBean {
 			client = null;
 			employee = null;
 			car = null;
-			employeeId = 0;
 			carId = 0;
 			transaction = null;
 		}
