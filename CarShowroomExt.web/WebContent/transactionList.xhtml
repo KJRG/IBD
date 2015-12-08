@@ -21,7 +21,7 @@
 		<p:column headerText="Action">
 			<h:form>
 				<h:commandButton action="#{transactionBean.editTransaction(transaction)}" value="Edit" />
-				<h:commandButton action="#{transactionBean.deleteTransaction(transaction)}" value="Delete" />
+				<h:commandButton action="#{transactionBean.deleteTransaction(transaction)}" value="Delete" onclick="return confirm('Are you sure?')" />
 			</h:form>
 		</p:column>
 	</p:dataTable>

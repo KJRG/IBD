@@ -26,7 +26,7 @@
 			<h:form>
 				<h:commandButton action="#{transactionBean.sellToClient(client)}" value="Sell car" />
 				<h:commandButton action="#{clientBean.editClient(client)}" value="Edit" />
-				<h:commandButton action="#{clientBean.deleteClient(client)}" value="Delete" />
+				<h:commandButton action="#{clientBean.deleteClient(client)}" value="Delete" onclick="return confirm('Are you sure?')" />
 			</h:form>
 		</p:column>
 	</p:dataTable>
