@@ -18,7 +18,7 @@
 				<h:link value="Home" outcome="index"/>
 				<h:link value="Cars" outcome="carList"/>
 				<h:link value="Clients" outcome="clientList"/>
-				<h:link value="Employees" outcome="employeeList"/>
+				<h:link value="Employees" outcome="employeeList" rendered="#{request.isUserInRole('admin')}"/>
 				<h:link value="Transactions" outcome="transactionList"/>
 				<h:link value="Sign out" outcome="/login/logout.jsp"/>
 			</ui:insert>

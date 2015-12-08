@@ -5,6 +5,7 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions" template="/layout/default.xhtml">
 
 	<ui:define name="content">
+	<ui:fragment rendered="#{request.isUserInRole('admin')}">
 		<h1>Add employee</h1>
 	
 		<h:form>
@@ -53,5 +54,6 @@
 			<h:link value="Back to employees list" outcome="employeeList" />
 		</h:form>
 
+	</ui:fragment>
 	</ui:define>
 </ui:composition>

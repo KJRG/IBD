@@ -4,6 +4,7 @@ import ibd.carshowroom.entities.Employee;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,6 +27,7 @@ public class EmployeeManagementService {
     public EmployeeManagementService() {
     }
 
+    @RolesAllowed({"admin"})
     public List<Employee> findAllEmployees() {
     	return em.createQuery("Select e From Employee e", Employee.class).getResultList();
     }
@@ -41,14 +43,17 @@ public class EmployeeManagementService {
     	return query.getSingleResult();
     }
     
+    @RolesAllowed({"admin"})
     public void addEmployee(Employee employee) {
     	em.persist(employee);
     }
     
+    @RolesAllowed({"admin"})
     public void updateEmployee(Employee employee) {
     	em.merge(employee);
     }
     
+    @RolesAllowed({"admin"})
     public void deleteEmployee(Employee employee) {
     	Employee employeeToBeRemoved = em.getReference(Employee.class, employee.getId());
     	em.remove(employeeToBeRemoved);

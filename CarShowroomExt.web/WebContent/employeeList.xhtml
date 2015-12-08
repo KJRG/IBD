@@ -6,6 +6,7 @@
 
 
 	<ui:define name="content">
+	<ui:fragment rendered="#{request.isUserInRole('admin')}">
 	<h1>Employees</h1>
 	
 	<h:form>
@@ -31,5 +32,6 @@
 	</p:dataTable>
 		
 		<hr/>
+	</ui:fragment>
 	</ui:define>
 </ui:composition>
