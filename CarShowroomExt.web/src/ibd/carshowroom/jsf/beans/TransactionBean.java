@@ -6,6 +6,7 @@ import ibd.carshowroom.entities.Car;
 import ibd.carshowroom.entities.Client;
 import ibd.carshowroom.entities.Employee;
 import ibd.carshowroom.entities.Transaction;
+import ibd.carshowroom.jsf.beans.ejb.ContextProviderBean;
 import ibd.carshowroom.service.CarManagementService;
 import ibd.carshowroom.service.ClientManagementService;
 import ibd.carshowroom.service.EmployeeManagementService;
@@ -20,6 +21,9 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "transactionBean")
 public class TransactionBean {
 
+	@EJB
+	ContextProviderBean contextProviderBean;
+	
 	@EJB
 	ClientManagementService clientService;
 
@@ -129,7 +133,13 @@ public class TransactionBean {
 	public String sell() {
 		if(client != null && employeeId != 0 && carId != 0 && transaction != null) {
 			car = carService.findCarById(carId);
-			employee = employeeService.findEmployeeById(employeeId);
+//			employee = employeeService.findEmployeeById(employeeId);
+			String username = contextProviderBean.getSessionContext().getCallerPrincipal().getName();
+			if(username == null) {
+				return "transactionList";
+			}
+			
+			employee = employeeService.findEmployeeByUsername(username);
 			
 			transaction.setDate(new java.sql.Date(utilDate.getTime()));
 			transaction.setClient(client);

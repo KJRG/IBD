@@ -26,7 +26,7 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "nazwa_uzytkownika")
+	@Column(name = "login")
 	String username;
 
 	@Column(name = "haslo")
