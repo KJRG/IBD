@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions" template="/layout/default.xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+	<ui:define name="content">
+		<h1>Sell car</h1>
+		<p>Client: #{transactionBean.client.toString()}</p>
+		
+		<h:form>
+			<table>
+				<tr>
+					<td>
+						<h:outputLabel value="Date " />
+					</td>
+					<td>
+						<p:calendar id="date" value="#{transactionBean.utilDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Price " />
+					</td>
+					<td>
+						<h:inputText id="price" value="#{transactionBean.transaction.price}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" VIN " />
+					</td>
+					<td>
+						<h:inputText id="vin" value="#{transactionBean.transaction.vin}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Car " />
+					</td>
+					<td>
+						<h:selectOneMenu value="#{transactionBean.carId}">
+							<f:selectItems value="#{transactionBean.cars}" var="car" itemValue="#{car.id}" itemLabel="#{car.toString()}" />
+						</h:selectOneMenu>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Employee " />
+					</td>
+					<td>
+						<h:selectOneMenu value="#{transactionBean.employeeId}">
+							<f:selectItems value="#{transactionBean.employees}" var="employee" itemValue="#{employee.id}" itemLabel="#{employee.toString()}" />
+						</h:selectOneMenu>
+					</td>
+				</tr>
+	
+				<tr>
+					<td>
+						<h:commandButton action="#{transactionBean.sell()}" value="Sell" />
+					</td>
+					<td>
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+		<hr />
+
+		<h:form>
+			<h:link value="Back to clients list" outcome="clientList" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>

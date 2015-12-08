@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core" template="/layout/default.xhtml">
+
+
+	<ui:define name="content">
+	<h1>Clients</h1>
+	
+	<h:form>
+		<h:link value="Add client" outcome="addClient"/>
+	</h:form>
+	
+	<p:dataTable var="client" value="#{clientBean.clients}">
+		<p:column headerText="First name">
+			<h:outputText value="#{client.firstName}" />
+		</p:column>
+		<p:column headerText="Last name">
+			<h:outputText value="#{client.lastName}" />
+		</p:column>
+		<p:column headerText="Phone number">
+			<h:outputText value="#{client.phoneNumber}" />
+		</p:column>
+		<p:column headerText="Action">
+			<h:form>
+				<h:commandButton action="#{transactionBean.sellToClient(client)}" value="Sell car" />
+				<h:commandButton action="#{clientBean.editClient(client)}" value="Edit" />
+				<h:commandButton action="#{clientBean.deleteClient(client)}" value="Delete" />
+			</h:form>
+		</p:column>
+	</p:dataTable>
+		
+		<hr/>
+	</ui:define>
+</ui:composition>

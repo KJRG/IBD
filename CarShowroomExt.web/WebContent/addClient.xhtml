@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions" template="/layout/default.xhtml">
+
+	<ui:define name="content">
+		<h1>Add client</h1>
+		
+		<h:form>
+			<table>
+				<tr>
+					<td>
+						<h:outputLabel value="First name " />
+					</td>
+					<td>
+						<h:inputText id="firstName" value="#{clientBean.client.firstName}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Last name " />
+					</td>
+					<td>
+						<h:inputText id="lastName" value="#{clientBean.client.lastName}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Phone number " />
+					</td>
+					<td>
+						<h:inputText id="phoneNumber" value="#{clientBean.client.phoneNumber}"
+							required="true" />
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<h:outputLabel value=" Country " />
+					</td>
+					<td>
+						<h:inputText id="addressCountry" value="#{clientBean.address.country}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" District " />
+					</td>
+					<td>
+						<h:inputText id="addressDistrict" value="#{clientBean.address.district}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" City " />
+					</td>
+					<td>
+						<h:inputText id="addressCity" value="#{clientBean.address.city}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Street " />
+					</td>
+					<td>
+						<h:inputText id="addressStreet" value="#{clientBean.address.street}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" House number " />
+					</td>
+					<td>
+						<h:inputText id="addressHouseNumber" value="#{clientBean.address.houseNumber}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Apartment number " />
+					</td>
+					<td>
+						<h:inputText id="addressApartmentNumber" value="#{clientBean.address.apartmentNumber}"
+							required="true" />
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<h:commandButton action="#{clientBean.addClient()}" value="Add" />
+					</td>
+					<td>
+					</td>
+				</tr>				
+			</table>
+		</h:form>
+
+		<hr />
+
+		<h:form>
+			<h:link value="Back to clients list" outcome="clientList" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>

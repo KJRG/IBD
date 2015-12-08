@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core" template="/layout/default.xhtml">
+
+
+	<ui:define name="content">
+	<h1>Employees</h1>
+	
+	<h:form>
+		<h:link value="Add employee" outcome="addEmployee"/>
+	</h:form>
+	
+	<p:dataTable var="employee" value="#{employeeBean.employees}">
+		<p:column headerText="First name">
+			<h:outputText value="#{employee.firstName}" />
+		</p:column>
+		<p:column headerText="Last name">
+			<h:outputText value="#{employee.lastName}" />
+		</p:column>
+		<p:column headerText="Phone number">
+			<h:outputText value="#{employee.phoneNumber}" />
+		</p:column>
+		<p:column headerText="Action">
+			<h:form>
+				<h:commandButton action="#{employeeBean.editEmployee(employee)}" value="Edit" />
+				<h:commandButton action="#{employeeBean.deleteEmployee(employee)}" value="Delete" />
+			</h:form>
+		</p:column>
+	</p:dataTable>
+		
+		<hr/>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core" template="/layout/default.xhtml">
+
+
+	<ui:define name="content">
+	<h1>Transactions</h1>
+	
+	<p:dataTable var="transaction" value="#{transactionBean.transactions}">
+		<p:column headerText="Date">
+			<h:outputText value="#{transaction.date}" />
+		</p:column>
+		<p:column headerText="Price">
+			<h:outputText value="#{transaction.price}" />
+		</p:column>
+		<p:column headerText="VIN">
+			<h:outputText value="#{transaction.vin}" />
+		</p:column>
+		<p:column headerText="Action">
+			<h:form>
+				<h:commandButton action="#{transactionBean.editTransaction(transaction)}" value="Edit" />
+				<h:commandButton action="#{transactionBean.deleteTransaction(transaction)}" value="Delete" />
+			</h:form>
+		</p:column>
+	</p:dataTable>
+		
+		<hr/>
+	</ui:define>
+</ui:composition>

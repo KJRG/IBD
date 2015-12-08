@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions" template="/layout/default.xhtml">
+
+	<ui:define name="content">
+		<h1>Edit car</h1>
+		
+		<h:form>
+			<table style="layout:left;">
+				<tr>
+					<td>
+						<h:outputLabel value="Make " />
+					</td>
+					<td>
+						<h:inputText id="carMake" value="#{carBean.car.make}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Model " />
+					</td>
+					<td>
+						<h:inputText id="carModel" value="#{carBean.car.model}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Version " />
+					</td>
+					<td>
+						<h:inputText id="carVersion" value="#{carBean.car.version}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Price " />
+					</td>
+					<td>
+						<h:inputText id="carPrice" value="#{carBean.car.price}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Fuel consumption " />
+					</td>
+					<td>
+						<h:inputText id="carFuelConsumption" value="#{carBean.car.fuelConsumption}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Capacity " />
+					</td>
+					<td>
+						<h:inputText id="carCapacity" value="#{carBean.car.capacity}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Fuel type " />
+					</td>
+					<td>
+						<h:inputText id="carFuel" value="#{carBean.car.fuel}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:commandButton action="#{carBean.updateCar()}" value="Update" />
+					</td>
+					<td>
+					</td>
+				</tr>
+					
+			</table>
+		</h:form>
+
+		<hr />
+
+		<h:form>
+			<h:link value="Back to cars list" outcome="carList" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>

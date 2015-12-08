@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions" template="/layout/default.xhtml">
+
+	<ui:define name="content">
+		<h1>Add employee</h1>
+	
+		<h:form>
+			<table>
+				<tr>
+					<td>
+						<h:outputLabel value="First name " />
+					</td>
+					<td>
+						<h:inputText id="firstName" value="#{employeeBean.employee.firstName}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Last name " />
+					</td>
+					<td>
+						<h:inputText id="lastName" value="#{employeeBean.employee.lastName}"
+							required="true" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel value=" Phone number " />
+					</td>
+					<td>
+						<h:inputText id="phoneNumber" value="#{employeeBean.employee.phoneNumber}"
+							required="true" />
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<h:commandButton action="#{employeeBean.updateEmployee()}" value="Update" />
+					</td>
+					<td>
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+		<hr />
+
+		<h:form>
+			<h:link value="Back to employees list" outcome="employeeList" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
